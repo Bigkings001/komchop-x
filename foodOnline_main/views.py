@@ -23,6 +23,8 @@ def get_or_set_current_location(request):
         return None
 
 
+
+
 def home(request):
     if get_or_set_current_location(request) is not None:
 
@@ -38,3 +40,4 @@ def home(request):
         'vendors': vendors,
     }
     return render(request, 'home.html', context)
+    

@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.contrib.auth.tokens import default_token_generator
-from django.core.mail import message
+from django.core.mail import message, send_mail
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.utils.http import urlsafe_base64_decode
@@ -63,9 +63,21 @@ def registerUser(request):
             mail_subject = 'Please activate your account'
             email_template = 'accounts/emails/account_verification_email.html'
             send_verification_email(request, user, mail_subject, email_template)
+            send_mail(
+                "Komchop User Sign-up Success",
+                f"{email}, has just signed-up on komchop",
+                email,
+                ["komchopfoods@gmail.com"],
+                fail_silently=False,
+            )
             messages.success(request, 'Registered sucessful, check your mail inbox for verification link!')
             # return redirect('registerUser') 
-            return redirect('login') 
+
+            # Your logic to generate context_data
+            context_data = {'notification': 'Voilà! Your account is successfully created. Happy to have you join us! 📨 Please check your email and verify your account to get started'}
+            # Storing data in session
+            request.session['context_data'] = context_data
+            return redirect('userNotification') 
         else:
             print('invalid form')
             print(form.errors)
@@ -108,7 +120,13 @@ def registerVendor(request):
             send_verification_email(request, user, mail_subject, email_template)
 
             messages.success(request, 'Your account has been registered sucessfully! check mail inbox for verification link!.')
-            return redirect('registerVendor')
+            
+            # Your logic to generate context_data
+            context_data = {'notification': 'Voilà! Your account is successfully created. Happy to have you join us! 📨 Please check your email and verify your account to get started. After you have verified your account our admin will assess your business profile for approval'}
+            # Storing data in session
+            request.session['context_data'] = context_data
+
+            return redirect('userNotification')
             # return redirect('home')
         else:
             print('invalid form')
@@ -137,6 +155,14 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         messages.success(request, 'Congratulation! Your account is activated.')
+        print(user)
+        send_mail(
+            "Komchop user Sign-in Success",
+            f"{user}, has just signed-in on komchop",
+            user,
+            ["komchopfoods@gmail.com"],
+            fail_silently=False,
+        )
         return redirect('myAccount')
     else:
         messages.error(request, 'Invalid activation link')
@@ -271,3 +297,7 @@ def reset_password(request):
             messages.error(request, 'Password do not match!')
             return redirect('reset_password')
     return render(request, 'accounts/reset_password.html')
+
+def userNotification(request):
+    context_data = request.session.get('context_data', {})
+    return render(request, 'accounts/user_notification.html', {'context_data': context_data})

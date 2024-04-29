@@ -7,6 +7,7 @@ from menu.models import FoodItem
 from .forms import OrderForm
 from .models import Order, OrderedFood, Payment
 import simplejson as json
+from django.core.mail import send_mail
 from .utils import generate_order_number, order_total_by_vendor
 from accounts.utils import send_notification
 from django.contrib.auth.decorators import login_required
@@ -195,6 +196,15 @@ def payments(request):
                     'vendor_grand_total': order_total_by_vendor(order, i.fooditem.vendor.id)['grand_total'],
                 }
                 send_notification(mail_subject, mail_template, context)
+
+        #Send notification to Komchop Admin successful place order
+        send_mail(
+            "Komchop placed order",
+            f"{order.email}, has just places an order on komchop",
+            order.email,
+            ["komchopfoods@gmail.com"],
+            fail_silently=False,
+        )
 
         # CLEAR THE CART IF THE PAYMENT IS SUCCESS
         cart_items.delete() 

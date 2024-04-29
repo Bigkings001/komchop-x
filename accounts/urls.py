@@ -22,4 +22,6 @@ urlpatterns = [
     path('vendor/', include('vendor.urls')),
     path('customer/', include('customers.urls')),
 
+    path('user-notification/', views.userNotification, name='userNotification'),
+
 ]

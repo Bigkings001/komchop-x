@@ -23,6 +23,7 @@ from marketplace import views as MarketplaceViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('', views.home, name='home'),
     path('', views.home, name='home'),
     path('', include('accounts.urls')),
 

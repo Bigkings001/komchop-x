@@ -141,13 +141,26 @@
                                             {% endfor %}
 
 
+
+                                            <li style="list-style-type: none;">
+                                                Delivery fee
+                                                <span class="price float-right">
+                                                    <span class="currency">₦</span>
+                                                    <span id="subtotal">{{900|floatformat:2}}</span>
+                                                </span>
+                                            </li>
+                                            
+
+
                                             <li style="list-style-type: none; font-weight: 600;">
                                                 TOTAL
                                                 <span class="price float-right">
                                                     <span class="currency">₦</span>
-                                                    <span id="total">{{ grand_total }}</span>
+                                                    <span id="total">{{ grand_total|floatformat:2 }}</span>
                                                 </span>
                                             </li>
+
+                                           
 
                                             <!-- Select payment method -->
                                             <h5>SELECT PAYMENT METHOD</h5>
