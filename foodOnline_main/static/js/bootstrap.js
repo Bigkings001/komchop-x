@@ -1524,7 +1524,7 @@ if (typeof jQuery === 'undefined') {
     this.init('popover', element, options)
   }
 
-  if (!$.fn.tooltip) throw new Error('Popover%20requires%20tooltip.html')
+  if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
 
   Popover.VERSION  = '3.3.7'
 

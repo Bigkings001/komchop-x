@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -110,15 +111,15 @@
 		<!-- Header End -->
 		<!-- Main Section Start -->
 		<div class="main-section ">
-			<div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 250px;padding-bottom: 250px;margin-bottom: 0px;background: url({% static 'extra-images/home-top-1.jpg' %}) no-repeat center / cover;">
+			<div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 80px;padding-bottom: 80px;margin-bottom: 0px;background: url({% static 'extra-images/pexels-shamia-casiano-183672-2015097.jpg' %}) no-repeat center / cover;">
 				<div class="container">
 					<div class="row">
 						<div class="section-fullwidth col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="row">
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
 									<div class="column-content ">
-										<b style="font-size: 50px; text-transform: uppercase; line-height: 60px; text-align: center; display: block; margin-bottom: 30px; letter-spacing: 6px; color: rgb(255, 255, 255);">
-											ORGANIC FAST FOOD MADE<br>EASY AND HEALTHY</b>
+										<b style="font-size: 40px; text-transform: uppercase; line-height: 60px; text-align: center; display: block; margin-bottom: 30px; letter-spacing: 6px; color: rgb(255, 255, 255);">
+											Your meal is a <br>click away</b>
 									</div>
 								</div>
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
@@ -205,8 +206,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 40px;padding-bottom: 40px;margin-bottom: 0px;background: #eb6825;">
-				<!-- Container Start -->
+			<!-- <div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 40px;padding-bottom: 40px;margin-bottom: 0px;background: #eb6825;">
+				
 				<div class="container ">
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
@@ -243,8 +244,8 @@
 							</div>
 						</div>
 					</div>
-				</div> <!-- End Container Start -->
-			</div>
+				</div>
+			</div> -->
 			<div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 80px;padding-bottom: 0px;margin-bottom: 0px;background: #ffffff;">
 				<!-- Container Start -->
 				<div class="container ">
@@ -580,7 +581,7 @@
 									 covered.
 									</span>
 								</div>
-								<a href="http://127.0.0.1:8000/marketplace/" class="csborder-color cs-color" style="background-color:#f7f7f7 !important;  color:#435061 !important;">Order
+								<a href="{% url 'marketplace' %}" class="csborder-color cs-color" style="background-color:#f7f7f7 !important;  color:#435061 !important;">Order
 									Now</a>
 							</div>
 						</div>
@@ -605,7 +606,7 @@
 				
 									</span>
 								</div>
-								<a href="#" class="csborder-color cs-color" style="background-color:#eb6825 !important;  color:#ffffff !important;">Order
+								<a href="{% url 'marketplace' %}" class="csborder-color cs-color" style="background-color:#eb6825 !important;  color:#ffffff !important;">Order
 									Now</a>
 							</div>
 						</div>
